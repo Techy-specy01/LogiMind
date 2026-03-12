@@ -1,9 +1,16 @@
 import os
 import requests
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+from pydantic import BaseModel
+from services.gemini_engine import analyze_news_content
+from solver import optimize_supply_chain
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 load_dotenv()
 
@@ -20,6 +27,18 @@ app.add_middleware(
 
 # 2. Configuration (Replace with your actual key)
 NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+
+class NewsRequest(BaseModel):
+    text: str
+
+@app.post("/analyze")
+async def analyze(request: NewsRequest):
+    try:
+        result = analyze_news_content(request.text)
+        return result
+    except Exception as e:
+        print(f"Error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 def analyze_severity(title, description):
     """Simple heuristic to flag high-impact events for the AI agent."""
@@ -64,6 +83,19 @@ async def get_supply_chain_news():
 
     except Exception as e:
         return {"status": "error", "message": str(e)}
+
+@app.post("/api/solver/optimize")
+async def run_solver(payload: dict = Body(...)):
+    """
+    Expects payload: {"blocked_routes": ["Suez_Canal"]}
+    """
+    blocked = payload.get("blocked_routes", [])
+    result = optimize_supply_chain(blocked_routes=blocked)
+
+    if result["status"] != "Optimal":
+        return {"status": "error", "message": "No feasible route found under these constraints."}
+
+    return result
 
 if __name__ == "__main__":
     import uvicorn

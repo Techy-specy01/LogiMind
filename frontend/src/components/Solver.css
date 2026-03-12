@@ -1,0 +1,204 @@
+.solver-container {
+  background: var(--bg-primary); /* Use variable */
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove hover effect on container */
+.solver-container:hover {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.metric-card {
+  background: var(--bg-secondary);
+  padding: 16px;
+  border-radius: 4px; /* Sharper */
+  border: 1px solid var(--border-color);
+  text-align: left; /* Align left for enterprise look */
+  margin-bottom: 24px;
+  display: flex; /* Flex layout */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-card:hover {
+  transform: none; /* remove lift */
+  box-shadow: var(--shadow-sm);
+}
+
+.cost-value {
+  font-size: 1.5rem; /* Smaller, more precise */
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'SF Mono', 'Roboto Mono', monospace; /* Monospace for numbers */
+  display: block;
+}
+
+.route-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  padding: 4px 0;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.route-row:hover {
+  color: var(--text-primary);
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 6px; /* Thinner */
+  background: #e2e8f0;
+  border-radius: 2px; /* Less rounded */
+  overflow: hidden;
+}
+
+.progress-bar::before {
+  display: none; /* Remove shimmer */
+}
+
+.fill {
+  height: 100%;
+  background: var(--accent-secondary); /* Use theme color */
+  border-radius: 2px;
+}
+
+.fill::after {
+  display: none; /* Remove fancy effect */
+}
+
+/* Remove old button classes as we will use global ones */
+.btn-alert, .btn-reset {
+   display: none; 
+}
+
+/* Additional solver-specific styles */
+.solver-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.solver-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.solver-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  animation: pulse 2s infinite;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.route-section {
+  margin-top: 24px;
+}
+
+.route-header {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.route-count {
+  background: var(--accent-blue);
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* Control Panel */
+.control-panel h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.results-grid {
+  margin-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 20px;
+}
+
+.allocation-list h4, .metric-card h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.allocation-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .solver-container {
+    padding: 16px;
+    margin-top: 16px;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .metric-card {
+    padding: 16px;
+  }
+  
+  .cost-value {
+    font-size: 2rem;
+  }
+  
+  .route-row {
+    gap: 12px;
+    font-size: 0.8rem;
+  }
+  
+  .solver-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

@@ -1,72 +1,93 @@
+/* Custom Variables - Classic Enterprise Theme */
 :root {
-  --bg-dark: #0a0a0b;
-  --card-bg: #161618;
-  --text-main: #e4e4e7;
-  --accent-red: #ef4444;
-  --accent-green: #22c55e;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #cbd5e1; /* Darker border for definition */
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --accent-primary: #0f172a; /* Navy Blue/Black for serious tone */
+  --accent-secondary: #334155;
+  --success: #15803d; /* Darker green */
+  --danger: #b91c1c; /* Darker red */
+  --warning: #b45309; /* Darker amber */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.feed-container {
-  background: var(--bg-dark);
-  color: var(--text-main);
-  padding: 2rem;
-  height: 100vh;
-  font-family: 'Inter', sans-serif;
+/* Override Tailwind base styles for better consistency */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
 }
 
-.feed-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #333;
-  padding-bottom: 1rem;
+/* Classic Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.pulse-icon {
-  width: 12px;
-  height: 12px;
-  background: var(--accent-red);
-  border-radius: 50%;
-  animation: pulse 1.5s infinite;
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
 
-.intel-card {
-  background: var(--card-bg);
-  border: 1px solid #27272a;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.intel-card.high {
-  border-left: 4px solid var(--accent-red);
-}
-
-.intel-card:hover {
-  border-color: #52525b;
-  transform: translateX(5px);
-}
-
-.source-tag {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #a1a1aa;
-  font-weight: bold;
-}
-
-.severity-badge {
-  font-size: 0.7rem;
-  padding: 2px 8px;
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
   border-radius: 4px;
-  background: #27272a;
 }
 
-.high .severity-badge { color: var(--accent-red); }
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
 
-@keyframes pulse {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+/* Clean Cards - Enterprise Style */
+.card-classic {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px; /* Sharper corners */
+  box-shadow: var(--shadow-sm);
+}
+
+/* Classic Button Styles */
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: white;
+  border: 1px solid var(--accent-primary);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #334155;
+  border-color: #334155;
+}
+
+.btn-outline {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }

@@ -19,7 +19,7 @@ app.add_middleware(
 )
 
 # 2. Configuration (Replace with your actual key)
-NEWS_API_KEY = os.getenv("NEWS_API_KEY", "YOUR_NEWS_API_KEY_HERE")
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
 def analyze_severity(title, description):
     """Simple heuristic to flag high-impact events for the AI agent."""

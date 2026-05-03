@@ -132,7 +132,7 @@ const IntelligenceFeed = ({ onDisruptionDetected }) => {
   }
 
   return (
-    <div className="flex flex-col h-full bg-white border border-slate-200 rounded-sm shadow-sm overflow-hidden font-sans">
+    <div className="flex flex-col h-full surface-3d rounded-xl overflow-hidden font-sans">
       <div className="px-3 py-2 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
         <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
           <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
@@ -146,7 +146,7 @@ const IntelligenceFeed = ({ onDisruptionDetected }) => {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto custom-scrollbar">
+      <div className="flex-1 overflow-y-auto custom-scrollbar bg-gradient-to-b from-white to-slate-50/50">
         {alerts.length === 0 ? (
           <div className="p-8 text-center text-slate-400 text-xs font-mono">-- No active alerts --</div>
         ) : (
@@ -155,10 +155,11 @@ const IntelligenceFeed = ({ onDisruptionDetected }) => {
               <div
                 key={alert.id}
                 onClick={() => handleAlertClick(alert)}
-                className={`group p-3 hover:bg-slate-50 transition-colors cursor-pointer ${getSeverityStyles(alert.severity)}`}
+                className={`group p-3.5 hover:bg-white transition-colors duration-200 cursor-pointer ${getSeverityStyles(alert.severity)}`}
               >
                 <div className="flex justify-between items-start mb-1">
                   <div className="flex items-center gap-2">
+                    <span className="text-slate-500">{getTypeIcon(alert.type)}</span>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
                       {alert.source}
                     </span>

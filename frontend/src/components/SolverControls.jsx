@@ -80,9 +80,9 @@ const SolverControls = ({ blockedRoutes, setSolverData, solverData }) => {
   ];
 
   return (
-    <div className="flex-1 flex flex-col bg-white">
+    <div className="flex-1 flex flex-col bg-white/85">
       {/* Scenario Selection - Tabs Style */}
-      <div className="bg-slate-50 border-b border-slate-300">
+      <div className="bg-slate-50 border-b border-slate-200">
         <div className="flex overflow-x-auto">
           {scenarios.map((s) => (
             <button
@@ -90,8 +90,8 @@ const SolverControls = ({ blockedRoutes, setSolverData, solverData }) => {
               onClick={() => setScenario(s.id)}
               className={`flex-1 min-w-[120px] px-4 py-3 text-left border-r border-slate-200 focus:outline-none transition-colors ${
                 scenario === s.id
-                  ? 'bg-white border-b-2 border-b-blue-600 text-blue-700'
-                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border-b border-slate-300'
+                  ? 'bg-white border-b-2 border-b-blue-700 text-blue-800'
+                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border-b border-slate-200'
               }`}
             >
               <div className="text-sm font-bold truncate">{s.name}</div>
@@ -106,10 +106,10 @@ const SolverControls = ({ blockedRoutes, setSolverData, solverData }) => {
       </div>
 
       {/* Analysis Controls */}
-      <div className="p-4 border-b border-slate-200 bg-white">
+      <div className="p-5 border-b border-slate-200 bg-white">
         <div className="space-y-4">
           {/* Input Parameters - Horizontal Layout */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1">
                   Constraints
@@ -157,7 +157,7 @@ const SolverControls = ({ blockedRoutes, setSolverData, solverData }) => {
                 className={`flex-1 py-2 rounded-sm font-bold text-xs uppercase tracking-wide transition-all shadow-sm ${
                   isAnalyzing
                     ? 'bg-slate-100 text-slate-400 border border-slate-300 cursor-wait'
-                    : 'bg-blue-700 hover:bg-blue-800 text-white border border-transparent shadow hover:shadow-md'
+                    : 'bg-slate-900 hover:bg-slate-800 text-white border border-transparent shadow hover:shadow-md'
                 }`}
               >
                 {isAnalyzing ? 'Processing Engine...' : 'Run Simulation'}
@@ -187,14 +187,14 @@ const SolverControls = ({ blockedRoutes, setSolverData, solverData }) => {
       </div>
 
       {/* Results - Data Grid */}
-      <div className="flex-1 overflow-y-auto scrollbar-thin bg-slate-50/50">
+      <div className="flex-1 overflow-y-auto scrollbar-thin bg-gradient-to-b from-slate-50/70 to-white">
         <div className="p-4 space-y-6">
           {/* Key Metrics */}
           <div>
              <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 border-b border-slate-200 pb-1">KPI Analysis</h4>
-             <div className="grid grid-cols-3 gap-3">
+             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {metrics.map((metric, index) => (
-                  <div key={index} className="bg-white border border-slate-200 rounded-sm p-3 shadow-sm">
+                  <div key={index} className="surface-3d rounded-lg p-3">
                     <span className="block text-[10px] font-semibold text-slate-500 uppercase mb-1">{metric.label}</span>
                     <div className="flex items-end justify-between">
                         <span className="text-xl font-bold text-slate-800 -mb-1">{metric.value}</span>
@@ -213,9 +213,9 @@ const SolverControls = ({ blockedRoutes, setSolverData, solverData }) => {
           {solverData && (
             <div>
               <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 border-b border-slate-200 pb-1">Optimization Strategy</h4>
-              <div className="bg-white border border-slate-200 rounded-sm divide-y divide-slate-100">
+              <div className="surface-3d rounded-lg divide-y divide-slate-100">
                 {solverData.alternatives?.map((alt, index) => (
-                  <div key={index} className="p-3 flex items-start gap-3 hover:bg-slate-50 transition-colors">
+                  <div key={index} className="p-3 flex items-start gap-3 hover:bg-white transition-colors duration-200">
                     <div className="mt-1 w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
                     <div>
                         <div className="text-sm font-bold text-slate-800">{alt}</div>

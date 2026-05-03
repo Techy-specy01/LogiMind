@@ -32,7 +32,52 @@ const SolverDashboard = ({ latestDisruptions }) => {
       </div>
 
       <div className="p-6 flex-1 overflow-y-auto">
-        <div className="mb-6">
+      A high-resolution screenshot of a modern, dark-themed AI-driven web application dashboard for GitMeet, a platform for matching open-source contributors with GitHub issues. The entire interface utilizes a clean "card-based" layout and a distinct dark color palette (deep slate grays and blacks) with vibrant accent colors (emerald green, electric blue, and purple).
+
+Key visual specifications:
+
+Color Palette: Use deep dark backgrounds (like #101217), dark gray container cards (#181A20), bright green accents (for data and text like "Active"), vibrant blue (for buttons), and clear white or light gray text.
+
+Typography: A clean, legible sans-serif typeface throughout.
+
+1. Left Navigation Sidebar:
+A narrow, dark column on the far left. The app logo, "GitMeet," is at the top left in blue. Below it, a vertical list of menu items with simple, clean icons: "Dashboard" (highlighted in green with a green gauge icon), "Matches," "Explore," "My Projects," "Analytics," and "Settings."
+
+2. Main Content Area:
+The primary dashboard, titled "Developer Dashboard" at the top in large text, followed by "Welcome back, Alex! Let's find your next contribution." in a smaller font.
+
+Quick Stats Row (Top): Four horizontal, equally-sized rectangular cards.
+
+Card 1 (Contribution Health Score): Title "Contribution Health Score." A large semi-circular gauge chart, 3/4 full, displaying "92/100" in large green numbers. Below the chart, green text says "Active" and "Vertex AI Insight: Your merged PRs increased 15% this month."
+
+Card 2 (Active PRs): Title "Active PRs." Large blue number "3" and small text "(2 approved, 1 under review)."
+
+Card 3 (Open Matches): Title "Open Matches." Large blue number "8" with text "personalized opportunities waiting."
+
+Card 4 (GitHub Impact): Title "GitHub Impact (Last 30 days)." Bold text "125 commits, 14 PRs merged." A green line graph below shows a slight upward trend.
+
+Middle Content Area (Largest Cards): Two main containers.
+
+Left (Global Open Source Trends): Title "Global Open Source Trends." A detailed bar chart showing "Popular repositories and languages" with x-axis labels: "Php," "Java," "SQL," "Rust," "Dyt" and y-axis from 0 to 100. Text below: "Powered by GitHub data."
+
+Right (Top Recommended Matches): Title "Top Recommended Matches" with text "A tinder-like stack of cards." A prominent, stacked-card view showing a single project recommendation.
+
+Recommendation Details: "Project: google/jax," "Issue: #18203 Improve performance of vector operations on TPU." Colored tags: C++, XLA, Performance.
+
+Matching Data: "Similarity Score: 95% Match" (green text) and "Estimated Time: 5-8 hours." text below: "Based on your history with NumPy."
+
+Action Buttons: A large, solid blue button labeled "View Issue on GitHub" and a smaller outline button labeled "Skip."
+
+Paging: Three small pagination dots below the card.
+
+3. Right Sidebar/Column: Three distinct vertical widgets.
+
+Widget 1 (Tech Stack): A profile picture of a person (Alex R.), and four rounded tags/bubbles: Python, TensorFlow, JAX, Rust. Text below: "Derived via GitHub API." and a small GitHub activity graph (green dots).
+
+Widget 2 (System Logs): Title "System Logs & Vertex AI Activity." A feed with small profile photos and text: "Recommendatin Recent recommendations processed 1h ago" and "Recent recommendations processed 2m ago."
+
+4. Top Header Bar:
+A thin horizontal bar across the top. A centered, wide search bar with a magnifying glass icon and the text "Search repos, issues, developers..." and a profile name "Alex R." with a user photo dropdown menu.        <div className="mb-6">
             <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-3">Scenario Controls</h4>
             <div className="flex flex-col gap-3">
                 <button 

@@ -13,6 +13,9 @@
   --warning: #b45309; /* Darker amber */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 24px -12px rgba(15, 23, 42, 0.22);
+  --shadow-3d: 0 12px 28px -20px rgba(15, 23, 42, 0.32), 0 6px 14px -12px rgba(15, 23, 42, 0.2);
+  --surface-glass: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.94));
 }
 
 /* Override Tailwind base styles for better consistency */
@@ -21,6 +24,38 @@ body {
   background: var(--bg-secondary);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
+  perspective: 1400px;
+}
+
+#root {
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(148, 163, 184, 0.12), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(99, 102, 241, 0.08), transparent 35%);
+}
+
+.surface-3d {
+  background: var(--surface-glass);
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  box-shadow: var(--shadow-3d);
+  backdrop-filter: blur(4px);
+}
+
+.lift-3d {
+  transform: translateZ(0);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.lift-3d:hover {
+  transform: translateY(-2px) translateZ(4px);
+  box-shadow: 0 14px 30px -20px rgba(15, 23, 42, 0.33), 0 6px 16px -12px rgba(15, 23, 42, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lift-3d,
+  .lift-3d:hover {
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Classic Scrollbars */
@@ -46,7 +81,7 @@ body {
 .card-classic {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 6px; /* Sharper corners */
+  border-radius: 12px;
   box-shadow: var(--shadow-sm);
 }
 

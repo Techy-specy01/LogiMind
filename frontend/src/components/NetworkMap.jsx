@@ -1,15 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const NetworkMap = ({ blockedRoutes = [] }) => {
-  const [animationPhase, setAnimationPhase] = useState(0);
   const isSuezBlocked = blockedRoutes.includes("Suez_Canal");
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimationPhase(prev => (prev + 1) % 100);
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
 
   const routes = [
     {
@@ -49,13 +41,6 @@ const NetworkMap = ({ blockedRoutes = [] }) => {
     { id: 'singapore', name: 'Singapore', x: 200, y: 320, region: 'Asia', status: 'operational' }
   ];
 
-  const getRouteColor = (route) => {
-    if (route.isBlocked) return '#dc2626'; // Red-600
-    if (route.traffic > 70) return '#059669'; // Emerald-600
-    if (route.traffic > 40) return '#d97706'; // Amber-600
-    return '#475569'; // Slate-600
-  };
-
   const getPortStatusColor = (status) => {
     switch (status) {
       case 'operational': return '#059669'; // Emerald-600 (Darker, non-neon)
@@ -68,7 +53,7 @@ const NetworkMap = ({ blockedRoutes = [] }) => {
   return (
     <div className="relative w-full h-full min-h-[500px] bg-slate-100 flex flex-col font-sans">
       {/* Map Controls - Enterprise Style */}
-      <div className="absolute top-4 right-4 z-10 flex flex-col gap-1 shadow-sm bg-white rounded border border-slate-300">
+      <div className="absolute top-4 right-4 z-10 flex flex-col gap-1 surface-3d rounded-lg">
         <button className="w-8 h-8 flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors border-b border-slate-200">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -82,13 +67,14 @@ const NetworkMap = ({ blockedRoutes = [] }) => {
       </div>
 
       {/* Main SVG Map */}
-      <div className="flex-1 flex items-center justify-center bg-slate-50 relative overflow-hidden">
+      <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">
+        <div className="absolute inset-x-20 top-6 h-20 bg-indigo-200/10 blur-3xl pointer-events-none" />
         {/* Subtle grid pattern for professional look */}
         <div className="absolute inset-0 z-0 opacity-[0.4]" 
              style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
         </div>
 
-        <svg viewBox="0 0 800 400" className="w-full h-full max-h-[400px] z-10">
+        <svg viewBox="0 0 800 400" className="w-full h-full max-h-[400px] z-10 drop-shadow-[0_8px_14px_rgba(15,23,42,0.16)]">
           <defs>
             {/* Removed Glow Filters for clean look */}
             <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="28" refY="3.5" orient="auto">
@@ -168,7 +154,7 @@ const NetworkMap = ({ blockedRoutes = [] }) => {
       </div>
 
       {/* Route Status Panel - Table Style */}
-      <div className="bg-white border-t border-slate-300">
+      <div className="bg-white/80 backdrop-blur border-t border-slate-200">
         <table className="w-full text-left border-collapse">
             <thead>
                 <tr className="bg-slate-50 border-b border-slate-200 text-xs text-slate-500 uppercase tracking-wider">
